@@ -1,0 +1,30 @@
+{% extends 'app/base.html' %}
+
+{% block title %} {{movie.title}} {% endblock %}
+
+{% block content %}
+<div class="grid grid-cols-5 gap-6" dir="rtl" style="float:right">
+    <div class="col-span-3">
+        <img src="{{ movie.image.url}}" class="rounded-xl" style="height:500px; width:auto">"
+    </div>
+    <div class="col-span-2 p-6 bg-gray-100 rounded-xl">
+        <h1 class="mb-6 text-3xl">{{item.title}}</h1>
+        <p class="text-gray-500"><strong>Year: </strong>{{movie.year}}</p>
+        <p class="text-gray-500"><strong>Added date: </strong>{{movie.created_at}}</p>
+        <br>
+        <p class="text-gray-700">
+            <strong class="text-gray-500">Description:</strong><br>{{movie.description}}
+        </p>
+        
+    </div>
+
+    <iframe width="640" height="360" src="{{movie.link1}}" allowfullscreen></iframe>
+    </div>
+    <br>
+    <div>
+    <iframe width="640" height="360" src="{{movie.link2}}" allowfullscreen></iframe>
+    </div>
+</div>
+
+
+{% endblock %}

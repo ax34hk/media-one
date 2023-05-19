@@ -1,0 +1,31 @@
+{% extends 'app/base.html' %}
+
+{% block title %} {{category}} {% endblock %}
+
+{% block content %}
+
+<div id="main">
+    <div id="content">
+      <div class="box">
+        {% for movie in movies %}
+        <div class="movie">
+          <!-- <div class="movie-image"> <span class="play"><span class="name">{{movie.title}}</span></span> <a href="{% url 'app:movie' movie.id %}"><img src="{{movie.image.url}}" alt="" /></a> </div> -->
+          <a href="{% url 'app:movie' movie.id %}"><div class="movie-image"> <span class="play"><span class="name">{{movie.title}}</span></span><img src="{{movie.image.url}}" alt="" /></div></a> 
+  
+          <div class="rating">
+            <p>التقييم</p>
+            <div class="stars">
+              <div class="stars-in"> </div>
+            </div>
+            </div>
+        </div>
+        {% endfor %}
+  
+      </div>
+    </div>
+  <div class="cl">&nbsp;</div>
+  </div>
+</div>
+
+
+{% endblock %}
