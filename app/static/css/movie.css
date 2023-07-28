@@ -1,0 +1,36 @@
+
+
+.movie-card {
+    display: flex;
+    width: 400px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .movie-poster {
+    flex: 1;
+    margin-left: 10px;
+  }
+
+  .movie-poster img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+  }
+
+  .movie-details {
+    flex: 2;
+  }
+
+  .movie-details h2 {
+    font-size: 18px;
+    margin: 0;
+  }
+
+  .movie-details p {
+    font-size: 14px;
+    margin: 5px 0;
+  }

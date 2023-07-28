@@ -17,14 +17,14 @@
 
 {% block content %}
 {% for category in categories %}
-<h1 class="my-4 mx-12 text-slate-200 flex text-4xl font-bold">{{category.name_ar}}</h1>
+<h1 class="my-4 mx-12 text-slate-200 text-4xl font-bold">{{category.name_ar}}</h1>
     <div class="container">
-        {% for movie in movies %}
-        {% if movie.category == category %}
+        {% for tvshow in tvshows %}
+        {% if tvshow.category == category %}
         <div class="movie-card">
             <div class="movie-header">
-                <div class="header-icon-container" style="background: url('{{movie.image.url}}');background-size: cover">
-                    <a href="{% url 'app:movie' movie.id %}">
+                <div class="header-icon-container" style="background: url('{{tvshow.image.url}}');background-size: cover">
+                    <a href="#">
                         <i class="material-icons header-icon"></i>
                     </a>
                 </div>
@@ -33,7 +33,7 @@
             <div class="movie-content">
                 <div class="movie-content-header">
                     <a href="#">
-                        <h3 class="movie-title">{{movie.title}}</h3>
+                        <h3 class="movie-title">{{tvshow.title}}</h3>
                     </a>
                 </div>
             </div><!--movie-content-->

@@ -14,7 +14,7 @@ class Category(models.Model):
 
 
 class Movie(models.Model):
-    title = models.CharField(max_length=50)
+    title = models.CharField(max_length=128)
     description = models.CharField(max_length=250)
     year = models.IntegerField()
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
@@ -28,4 +28,26 @@ class Movie(models.Model):
         return self.title
     
 
+class Serie(models.Model):
+    title = models.CharField(max_length=128)
+    description = models.CharField(max_length=250)
+    year = models.IntegerField()
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    is_tvshow = models.BooleanField(default=False)
+    image = models.ImageField(upload_to='images', blank=True, null=True)
+    created_at = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title
+    
+class Episode(models.Model):
+    name = models.CharField(max_length=128)
+    serie = models.ForeignKey(Serie, on_delete=models.CASCADE)
+    link1 = models.CharField(max_length=250, blank=True, null=True)
+    link2 = models.CharField(max_length=250, blank=True, null=True)
+    link3 = models.CharField(max_length=250, blank=True, null=True)
+    created_at = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name
 
