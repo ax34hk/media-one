@@ -15,30 +15,29 @@
     <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
     <link rel="stylesheet" href='{% static "css/style.css" %}' type="text/css" media="all" />
     <script type="text/javascript" src='{% static "js/jquery-1.4.2.min.js" %}'></script>
-    <script type="text/javascript" src='{% static "js/jquery-func.js" %}'></script> 
-    <script type="text/javascript" src='{% static "js/bootstrap.min.js" %}'></script> 
-    <script type="text/javascript" src='{% static "js/jquery-1.11.1.min.js" %}'></script> 
+    <script type="text/javascript" src='{% static "js/jquery-func.js" %}'></script>
+    <script type="text/javascript" src='{% static "js/bootstrap.min.js" %}'></script>
+    <script type="text/javascript" src='{% static "js/jquery-1.11.1.min.js" %}'></script>
     <script src="https://cdn.tailwindcss.com"></script>
     {% block head %}
     {% endblock %}
-    <title>افلام ومسلسلات</title>
+    <title>{% block title %}{% endblock %}</title>
 </head>
 
 <body>
     <header class="w-100 mb-2 z-30 py-4 px-6 flex flex-row-reverse bg-slate-900 items-center border-b border-slate-500">
         <a href="#" class="mx-10 text-xl font-bold"><img src='{% static "images/logo1.png" %}' height="80.5" width="119"></a>
-        <div class="space-x-3 space-x-reverse">
+        <div class="space-x-3 space-x-reverse max-lg:hidden">
             <a href="{% url 'app:movies' %}"
                 class="px-6 py-3 text-3xl font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700">افلام</a>
             <a href="{% url 'app:series' %}"
                 class="px-6 py-3 text-3xl font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700">مسلسلات</a>
-            <a href="{% url 'app:tvshows' %}"
-                class="px-6 py-3 text-3xl font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700">برامج
-                تلفزيونية</a>
-            <a href="#" class="px-6 py-3 text-3xl font-semibold bg-blue-600 text-white rounded-xl hover:bg-blue-800">آخر
-                الاضافات</a>
+            <a href="{% url 'app:latestmovies' %}" class="px-6 py-3 text-3xl font-semibold bg-blue-600 text-white rounded-xl hover:bg-blue-800">آخر
+                الافلام</a>
+            <a href="{% url 'app:latestepisodes' %}" class="px-6 py-3 text-3xl font-semibold bg-blue-600 text-white rounded-xl hover:bg-blue-800">آخر
+                الحلقات</a>
         </div>
-        <div class="w-1/3 mr-36">
+        <div class="w-1/3 mr-24">
             <form method="GET" action="{% url 'app:search' %}" class="flex flex-row-reverse">
                 <div class="search">
                     <input type="text" name="query" class="search__input" placeholder="ابحث عن فيلم او مسلسل">
@@ -56,18 +55,11 @@
         </div>
     </header>
     <div dir="rtl" class="place-content-start align-top flex flex-row w-full">
-        <div class="w-2/12 mx-2 bg-slate-100">
+        <div class="w-64 mx-2 bg-slate-100">
             <div class="flex flex-col border border-slate-600 rounded">
-                <a href="{% url 'app:movies' %}" class="px-2 py-2 pt-3 font-bold text-3xl text-slate-700 hover:bg-slate-200">افلام</a>
-                <a href="{% url 'app:series' %}"
-                    class="px-2 py-2 pt-3 font-bold text-3xl text-slate-700 border-t border-slate-300 hover:bg-slate-200">مسلسلات</a>
-                <a href="{% url 'app:tvshows' %}"
-                    class="px-2 py-2 pt-3 font-bold text-3xl text-slate-700 border-t border-slate-300 hover:bg-slate-200">برامج
-                    تلفزيونية</a>
-                <a href="#"
-                    class="px-2 py-2 pt-3 font-bold text-3xl text-slate-700 border-t border-slate-300 hover:bg-slate-200">آخر
-                    الاضافات</a>
-
+                {% for category in links %}
+                <a href="{% url 'app:category' category.slug %}" class="px-2 py-2 pt-3 font-bold text-3xl text-slate-700 hover:bg-slate-200">{{category.name_ar}}</a>
+                {% endfor %}
             </div>
 
         </div>

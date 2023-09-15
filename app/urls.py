@@ -9,14 +9,19 @@ app_name = 'app'
 
 urlpatterns = [
     path('api/', include(router.urls)),
-    path('test/', test, name='test'),
-    path('testcat/<slug:slug_category>/', testcat, name='testcat'),
+    path('', index, name='index'),
+    path('category/<slug:slug_category>/', category, name='category'),
     path('search/', search, name='search'),
     path('movies/', movies, name='movies'),
     path('series/', series, name='series'),
     path('tvshows/', tvshows, name='tvshows'),
-    path('movie/<int:pk>/', movie, name='movie'),
-    path('testmovie/<int:pk>/', testmovie, name='movie'),
-    path('watch/<int:pk>/', watch, name='watch'),
+    path('latestmovies/', latestmovies, name='latestmovies'),
+    path('latestepisodes/', latestepisodes, name='latestepisodes'),
+    path('movie/<uuid:pk>/', movie, name='movie'),
+    path('serie/<uuid:pk>/', serie, name='serie'),
+    path('watch/<uuid:pk>/', watch, name='watch'),
+    path('watchepisode/<uuid:pk>/', watchepisode, name='watchepisode'),
+    path('playvideo/', playvideo, name='playvideo'),
+
 
 ]

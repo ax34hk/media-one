@@ -19,7 +19,7 @@
 
 {% block content %}
 <div>
-    <h1 class="mb-5 text-slate-200 text-3xl">مشاهدة فيلم {% if movie.category.slug == 'movies-arab' %} {{movie.title_ar}} {%else%} {{movie.title}}{% endif %}</h1>
+    <h1 class="mb-5 text-slate-200 text-3xl">مشاهدة الحلقة {{ episode.number }} من المسلسل {% if serie.category.slug == 'series-arab' %} {{serie.title_ar}} {%else%} {{serie.title}}{% endif %}</h1>
 </div>
 
 <div class="h-screen flex flex-row max-lg:flex-col max-lg:w-full">
