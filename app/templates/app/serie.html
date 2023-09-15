@@ -1,0 +1,51 @@
+{% extends 'app/base.html' %}
+
+{% block title %} {{serie.title}} {% endblock %}
+
+{% block head %}
+{% load static %} 
+<meta charset='UTF-8'>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href='{% static "css/bootstrap.min.css"%}' rel="stylesheet">
+<link rel='stylesheet prefetch' href='{% static "css/normalize.min.css"%}'>
+<link rel='stylesheet prefetch' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
+<link href='{% static "css/teststyle.css"%}' rel="stylesheet">
+<script src='{% static "js/bootstrap.min.js" %}'></script>
+<script src='{% static "js/jquery-1.11.1.min.js" %}'></script>
+<script src="https://cdn.tailwindcss.com"></script>
+{% endblock %}
+
+{% block content %}
+<div class="flex flex-row">
+    
+    <div class="my-2 w-3/12 mx-2 bg-slate-900">
+        <img src="{{serie.image.url}}" class="rounded-xl">
+    </div>
+    <div class="mx-16 my-2 w-9/12 flex flex-col bg-slate-900">
+        <div class="my-4 text-5xl text-slate-300">
+            <p class="font-bold">
+                مسلسل {{ serie.title }}
+            </p>
+        </div>
+        <hr class="h-px my-4 bg-gray-600 border-0">
+        <div class="my-2 text-2xl text-slate-200">
+            <span>قصة المسلسل: {{serie.description}}</span>      
+        </div>
+        <div class="my-2 text-2xl flex flex-col text-slate-200">
+            <span>سنة الانتاج: {{serie.year}}</span>      
+            <span>التـقـيـيـم: {{serie.year}}</span>   
+            <span>المخـرج: {{serie.year}}</span>   
+            <span>الممثلون: {{serie.year}}</span>   
+        </div>
+        
+        <div class="my-2 text-2xl flex flex-row text-slate-200">
+            {% for episode in episodes %}
+            <a class="mt-12 mx-1 py-2 px-5 h-15 rounded-xl text-center text-4xl text-slate-900 bg-slate-200 hover:bg-slate-500" href="{% url 'app:watchepisode' episode.id %}"> مشاهدة الحلقة {{episode.number}}</a> 
+            {% endfor %}
+        </div>
+        
+    </div>
+
+</div>
+
+{% endblock %}
